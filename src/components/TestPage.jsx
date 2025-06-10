@@ -1,0 +1,200 @@
+// TestPage.jsx
+import React from "react";
+import SpecUpDisplay from "./SpecUpDisplay.jsx";
+
+const mockPlayers = [
+  {
+    name: "양희승",
+    character: "은월",
+    prev: {
+      items: [
+        {
+          item_name: "하이네스 원더러햇",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +6%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +6%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +6%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +6%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +6%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+    current: {
+      items: [
+        {
+          item_name: "하이네스 원더러햇",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "12",
+          potential_option_1: "STR +9%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +9%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +9%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +9%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+        {
+          item_name: "하이네스 원",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KEPCIPOA",
+          starforce: "10",
+          potential_option_1: "STR +9%",
+          potential_option_2: "STR +3%",
+          potential_option_3: "DEX +12",
+          additional_potential_option_1: "공격력 +2%",
+          additional_potential_option_2: "마력 +3%",
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+  },
+  {
+    name: "장기호",
+    character: "윈드브레이커",
+    prev: {
+      items: [
+        {
+          item_name: "앱솔랩스 나이트케이프",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KFPDJDNB",
+          starforce: "17",
+          potential_option_1: "INT +3%",
+          potential_option_2: "LUK +3%",
+          potential_option_3: "마력 +9",
+          additional_potential_option_1: "마력 +1%",
+          additional_potential_option_2: null,
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+    current: {
+      items: [
+        {
+          item_name: "앱솔랩스 나이트케이프",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KFPDJDNB",
+          starforce: "17",
+          potential_option_1: "INT +6%",
+          potential_option_2: "LUK +3%",
+          potential_option_3: "마력 +9",
+          additional_potential_option_1: "마력 +2%",
+          additional_potential_option_2: null,
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+  },
+   {
+    name: "최정재",
+    character: "듀얼블레이더",
+    prev: {
+      items: [
+        {
+          item_name: "앱솔랩스 나이트케이프",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KFPDJDNB",
+          starforce: "17",
+          potential_option_1: "INT +3%",
+          potential_option_2: "LUK +3%",
+          potential_option_3: "마력 +9",
+          additional_potential_option_1: "마력 +1%",
+          additional_potential_option_2: null,
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+    current: {
+      items: [
+        {
+          item_name: "앱솔랩스 나이트케이프",
+          item_icon: "https://open.api.nexon.com/static/maplestory/item/icon/KFPDJDNB",
+          starforce: "20",
+          potential_option_1: "INT +6%",
+          potential_option_2: "LUK +3%",
+          potential_option_3: "마력 +9",
+          additional_potential_option_1: "마력 +2%",
+          additional_potential_option_2: null,
+          additional_potential_option_3: null,
+        },
+      ],
+    },
+  },
+];
+
+export default function TestPage() {
+  return <SpecUpDisplay players={mockPlayers} />;
+}
