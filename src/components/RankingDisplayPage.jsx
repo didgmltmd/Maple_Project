@@ -1,72 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import CharacterCard from "./CharacterCard";
 import calculateConvertedPower from "../utils/calculateConvertedPower";
 import { Grid, Typography } from "@mui/material";
 
 export default function RankingDisplayPage({ characters }) {
-  const [charactersWithRankChange, setCharactersWithRankChange] = useState([]);
+  const [viewData, setViewData] = useState([]);
+  const prevRankingRef = useRef(
+    JSON.parse(localStorage.getItem("prevRanking") || "[]")
+  );
 
+  /* 1) characters 변경 시 새 랭킹 계산 */
   useEffect(() => {
-    if (!characters || characters.length === 0) return;
+    if (!characters?.length) return;
 
-    const prevRanking = JSON.parse(localStorage.getItem("prevRanking") || "[]");
-
-    const charactersWithScore = characters
-      .map((player) => {
-        const info = player.current;
-        if (!info || !info.stat || !info.basic) return null;
-
-        const convertedPower = calculateConvertedPower(info.stat);
-
+    const scoreList = characters
+      .map((p) => {
+        const info = p?.current;
+        if (!info?.stat || !info.basic) return null;
         return {
-          name: player.name,
-          character: player.character,
+          name: p.name,
+          character: p.character,
           world: info.basic.world_name,
           job: info.basic.character_class,
           level: info.basic.character_level,
           expRate: info.basic.character_exp_rate,
           image: info.basic.character_image,
-          convertedPower,
+          convertedPower: calculateConvertedPower(info.stat),
         };
       })
-      .filter(Boolean);
+      .filter(Boolean)
+      .sort((a, b) => b.convertedPower - a.convertedPower);
 
-    const sorted = [...charactersWithScore].sort(
-      (a, b) => b.convertedPower - a.convertedPower
-    );
-
-    const withChange = sorted.map((char, idx) => {
-      const prev = prevRanking.find((p) => p.name === char.name);
-      const prevIndex = prev?.index ?? -1;
+    /* 2) 이전 스냅샷과 비교해 ▲▼ 플래그 부여 */
+    const withDiff = scoreList.map((c, idx) => {
+      const before = prevRankingRef.current.find((r) => r.name === c.name);
+      const beforeIdx = before?.index ?? -1;
       return {
-        ...char,
-        getLow: prevIndex !== -1 && prevIndex < idx,
-        getHigh: prevIndex !== -1 && prevIndex > idx,
-        currentIndex: idx,
+        ...c,
+        getLow: beforeIdx !== -1 && beforeIdx < idx,
+        getHigh: beforeIdx !== -1 && beforeIdx > idx,
       };
     });
 
-    setCharactersWithRankChange(withChange);
+    /* 3) 화면에 표시 */
+    setViewData(withDiff);
 
-    localStorage.setItem(
-      "prevRanking",
-      JSON.stringify(withChange.map(({ name }, i) => ({ name, index: i })))
-    );
+    /* 4) ref 업데이트(다음 비교용) */
+    prevRankingRef.current = withDiff.map(({ name }, i) => ({
+      name,
+      index: i,
+    }));
   }, [characters]);
 
-  if (!characters || characters.length === 0) {
-    return <Typography></Typography>;
-  }
+  /* 5) ref 가 바뀔 때만 localStorage 저장 (뒤처리) */
+  useEffect(() => {
+    localStorage.setItem("prevRanking", JSON.stringify(prevRankingRef.current));
+  }, [prevRankingRef.current]);
+
+  /* ─ UI ─ */
+  if (!characters?.length) return <Typography />;
 
   return (
     <Grid container spacing={2} padding={2}>
-      {charactersWithRankChange.map((char, idx) => (
+      {viewData.map((c, idx) => (
         <Grid item xs={12} md={4} key={idx}>
           <CharacterCard
-            character={char}
+            character={c}
             index={idx}
-            getLow={char.getLow}
-            getHigh={char.getHigh}
+            getLow={c.getLow}
+            getHigh={c.getHigh}
           />
         </Grid>
       ))}
