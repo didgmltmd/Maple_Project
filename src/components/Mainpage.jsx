@@ -14,7 +14,7 @@ const CHARACTER_LIST = [
   { name: "김도훈", character: "윤준수" },
   { name: "최정재", character: "니하오윤준수" },
   { name: "손규열", character: "Mens" },
-  { name: "홍현우", character: "개화" },
+  { name: "홍현우", character: "BiiArkra" },
 ];
 
 export default function MainPage() {

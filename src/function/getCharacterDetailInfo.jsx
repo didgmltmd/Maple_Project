@@ -1,7 +1,7 @@
 // utils/getCharacterDetailInfo.js
 import axios from "axios";
 
-const API_KEY = "test_92dab22cf4710df25f78160a1c7d550d74111a80b16477173fe222f193000038efe8d04e6d233bd35cf2fabdeb93fb0d";
+const API_KEY = "test_92dab22cf4710df25f78160a1c7d550d87df19e0206f6173e64e088d97e7f9e3efe8d04e6d233bd35cf2fabdeb93fb0d";
 
 const delay = (ms = 400) => new Promise((res) => setTimeout(res, ms));
 
