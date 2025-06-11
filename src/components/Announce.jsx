@@ -4,27 +4,38 @@ import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import NoticeCard from "./NoticeCard";
 
+
+const delay = (ms = 300) => new Promise((res) => setTimeout(res, ms));
+
 const API_KEY =
-  "test_92dab22cf4710df25f78160a1c7d550d87df19e0206f6173e64e088d97e7f9e3efe8d04e6d233bd35cf2fabdeb93fb0d";
+  "test_92dab22cf4710df25f78160a1c7d550dd6cbdcd5583eebba334617fd655178bcefe8d04e6d233bd35cf2fabdeb93fb0d";
+
+let isFetching = false;
 
 async function getAnnounceInfo() {
+  if (isFetching) return [];
+  isFetching = true;
+
   const headers = {
     accept: "application/json",
     "x-nxopen-api-key": API_KEY,
   };
 
   try {
+    await delay(500);
     const response = await axios.get(
       "https://open.api.nexon.com/maplestory/v1/notice",
       { headers }
     );
-
     return response.data.notice || [];
   } catch (err) {
     console.error("공지사항 조회 실패:", err);
     return [];
+  } finally {
+    isFetching = false;
   }
 }
+
 
 export default function Announce() {
   const [noticeData, setNoticeData] = useState(null); // 로딩 구분을 위해 null 사용

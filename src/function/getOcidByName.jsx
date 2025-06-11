@@ -7,7 +7,7 @@ export default async function getOcidByName(characterName) {
       params: { character_name: characterName },
       headers: {
         accept: "application/json",
-        "x-nxopen-api-key": "test_92dab22cf4710df25f78160a1c7d550d87df19e0206f6173e64e088d97e7f9e3efe8d04e6d233bd35cf2fabdeb93fb0d" 
+        "x-nxopen-api-key": "test_92dab22cf4710df25f78160a1c7d550dd6cbdcd5583eebba334617fd655178bcefe8d04e6d233bd35cf2fabdeb93fb0d" 
       }
     });
 

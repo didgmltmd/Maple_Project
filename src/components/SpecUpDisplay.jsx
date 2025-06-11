@@ -84,9 +84,9 @@ export default function SpecUpDisplay({ players }) {
 
         /* (2) 스펙업 아이템 계산 */
         const ups = compareItems(
-          player.prev.items || [],
-          player.current.items || [],
-          mainStat,
+          player?.prev?.items || [],
+          player?.current?.items || [],
+          mainStat
         );
         if (ups.length === 0) return null;
         console.log("SpecUpDisplay ups:", ups);
