@@ -25,7 +25,7 @@ export default function RankingDisplayPage({ characters }) {
           level: info.basic.character_level,
           expRate: info.basic.character_exp_rate,
           image: info.basic.character_image,
-          convertedPower: calculateConvertedPower(info.stat),
+          convertedPower: calculateConvertedPower(info.stat,info.basic.character_class),
         };
       })
       .filter(Boolean)
