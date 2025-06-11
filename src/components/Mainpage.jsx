@@ -7,6 +7,7 @@ import  getCharacterDetailInfo  from "../function/getCharacterDetailInfo.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
 import SpecUpDisplay from "./SpecUpDisplay.jsx";
 import Test from "./TestPage.jsx";
+import Announce from "./Announce.jsx";
 
 const CHARACTER_LIST = [
   { name: "양희승", character: "Eunweoll" },
@@ -116,13 +117,14 @@ useEffect(() => {
               border: "1px solid black",
               padding: 2,
               height: "85.3vh",
+              overflowY: "auto", 
               marginY:2
             }}
             >
-            <Typography variant="subtitle1">여기다 뭐하지</Typography>
+              <Announce />
+            </Box>
           </Box>
         </Box>
-      </Box>
     </>
   );
 }

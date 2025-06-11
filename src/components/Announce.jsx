@@ -1,0 +1,71 @@
+// Announce.js
+import React, { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import axios from "axios";
+import NoticeCard from "./NoticeCard";
+
+const API_KEY =
+  "test_92dab22cf4710df25f78160a1c7d550d87df19e0206f6173e64e088d97e7f9e3efe8d04e6d233bd35cf2fabdeb93fb0d";
+
+async function getAnnounceInfo() {
+  const headers = {
+    accept: "application/json",
+    "x-nxopen-api-key": API_KEY,
+  };
+
+  try {
+    const response = await axios.get(
+      "https://open.api.nexon.com/maplestory/v1/notice",
+      { headers }
+    );
+
+    return response.data.notice || [];
+  } catch (err) {
+    console.error("공지사항 조회 실패:", err);
+    return [];
+  }
+}
+
+export default function Announce() {
+  const [noticeData, setNoticeData] = useState(null); // 로딩 구분을 위해 null 사용
+
+  useEffect(() => {
+    (async () => {
+      const list = await getAnnounceInfo();
+      console.log("공지사항 데이터:", list);
+      setNoticeData(list);
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log("noticeData changed:", noticeData);
+  }, [noticeData]);
+
+  if (noticeData === null) {
+    return (
+      <Box sx={{ p: 2, m: 2 }}>
+        <Typography align="center">공지사항을 불러오는 중...</Typography>
+      </Box>
+    );
+  }
+
+  if (noticeData.length === 0) {
+    return (
+      <Box sx={{ p: 2, m: 2 }}>
+        <Typography align="center">표시할 공지사항이 없습니다.</Typography>
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ m: 2, overflowY: "auto" }}>
+      {noticeData.map((item) => (
+        <NoticeCard
+          key={item.notice_id || item.id}
+          title={item.title}
+          contentUrl={item.url}
+        />
+      ))}
+    </Box>
+  );
+}
