@@ -38,7 +38,7 @@ async function getAnnounceInfo() {
 
 
 export default function Announce() {
-  const [noticeData, setNoticeData] = useState(null); // 로딩 구분을 위해 null 사용
+  const [noticeData, setNoticeData] = useState(null); 
 
   useEffect(() => {
     (async () => {
