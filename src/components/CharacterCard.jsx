@@ -65,7 +65,7 @@ export default function CharacterCard({ character , index ,getLow,getHigh}) {
     </>
   )}
 
-  {/* 🔴 꼴등: 이미지 표시 */}
+  {/* 🔴 꼴등: 이미지 표시
   {(index === 5 && !getHigh && !getLow) && (
         <>
       <span
@@ -102,7 +102,7 @@ export default function CharacterCard({ character , index ,getLow,getHigh}) {
     >🛢️</span>
     
     </>
-  )}
+  )} */}
 
 
   {getLow && (
