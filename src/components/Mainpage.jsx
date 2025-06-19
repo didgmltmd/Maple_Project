@@ -13,7 +13,7 @@ const CHARACTER_LIST = [
   { name: "양희승", character: "이브까지" },
   { name: "장기호", character: "시그하는애" },
   { name: "김도훈", character: "쟌뱃" },
-  { name: "최정재", character: "Eunweoll" },
+  { name: "최정재", character: "드럼통특공대" },
   { name: "손규열", character: "렬활" },
   { name: "홍현우", character: "BiiArkra" },
 ];
