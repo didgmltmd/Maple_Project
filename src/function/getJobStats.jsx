@@ -8,6 +8,7 @@ const JOB_STAT_TABLE = {
   kaiser:               { main: "STR", sub: "DEX" },
   adele:                { main: "STR", sub: "DEX" },
   ark:                  { main: "STR", sub: "DEX" },
+  len:                  { main: "STR", sub: "DEX" },
 
   /* 궁수 */
   bowmaster:            { main: "DEX", sub: "STR" },
@@ -67,6 +68,7 @@ const JOB_KR_TO_EN = {
   카이저:          "kaiser",
   아델:            "adele",
   아크:            "ark",
+  렌:              "len",
 
   /* 궁수 */
   보우마스터:      "bowmaster",
