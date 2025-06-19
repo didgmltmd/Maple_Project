@@ -15,7 +15,7 @@ const CHARACTER_LIST = [
   { name: "김도훈", character: "쟌뱃" },
   { name: "최정재", character: "드럼통특공대" },
   { name: "손규열", character: "렬활" },
-  { name: "홍현우", character: "BiiArkra" },
+  { name: "홍현우", character: "우현현홍" },
 ];
 
 export default function MainPage() {
