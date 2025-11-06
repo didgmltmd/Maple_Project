@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 📊 Maple Project – 캐릭터 랭킹 시스템  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+메이플스토리 캐릭터 정보를 활용한 **랭킹 시스템**으로,  
+캐릭터의 장비 정보, 잠재옵션, 스타포스 등을 기반으로 환산 전투력을 계산하고 랭킹을 표시하는 기능을 갖추고 있습니다.
+또한 스펙업한 장비를 감지하여 자동으로 띄워주는 기능을 갖추고 있습니다.
 
-## Available Scripts
+배포주소: https://didgmltmd.github.io/Maple_Project/
 
-In the project directory, you can run:
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 주요 기능
+- 캐릭터 정보(OCID 포함) 로컬스토리지 저장 및 업데이트  
+- API를 통해 장비 정보 조회 → 장비 스펙 변경 감지 → 환산 전투력 계산  
+- 랭킹페이지: 6명 캐릭터 비교 및 등수 표시  
+- 캐릭터 카드 컴포넌트 분리: `CharacterCard` 컴포넌트는 읽기 전용으로 유지  
+- Front-end: React + MUI 기반  
+- 로직: 메인페이지에서 API통신, localStorage 저장 → 랭킹디스플레이페이지에서 localStorage 기반 환산 및 표시  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 기술 스택
+| 범주             | 기술                                 |
+|------------------|--------------------------------------|
+| 프론트엔드       | React, MUI                           |
+| API 통신         | Axios                                |
+| 로컬 저장소       | localStorage                        |
+| 배포             | githubPage               |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 메인페이지
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="./images/maple_project.png" width="800" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> - **핵심 기능**
+> - 캐릭터 전투력 표기
+> - 캐릭터 이미지 클릭시 자세한 환산전투력 사이트로 연결
+> - 랭킹 표시 및 랭킹 하락, 상승시 시각적 표시
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 장비표시 페이지
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="./images/1.png" width="800" />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> - **핵심 기능**
+> - 스펙업한 장비 자동 감지 및 표기
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
